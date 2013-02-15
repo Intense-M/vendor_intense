@@ -24,6 +24,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.debug.alloc=0
 
+# Enable ADB authentication
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/intense/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
