@@ -189,4 +189,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.intense.buildtype=$(INTENSE_BUILD_TYPE)
 
 EXTENDED_POST_PROCESS_PROPS := vendor/intense/tools/process_props.py
-
