@@ -156,6 +156,15 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/intense/prebuilt/common/app/com.lovejoy777.rroandlayersmanager-12.apk:system/app/LayersManager/com.lovejoy777.rroandlayersmanager-12.apk
 
+# Proprietary latinime libs needed for Keyboard swyping
+ifneq ($(filter arm64,$(TARGET_ARCH)),)
+PRODUCT_COPY_FILES += \
+    vendor/intense/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so
+else
+PRODUCT_COPY_FILES += \
+    vendor/intense/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so
+endif
+
 # Versioning System
 PRODUCT_VERSION_MAJOR = 6.0.1
 PRODUCT_VERSION_MINOR = beta
