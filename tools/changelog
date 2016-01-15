@@ -14,7 +14,7 @@ fi
 touch $Changelog
 
 # Print something to build output
-echo ${bldppl}"Generating Intense-M changelog..."${txtrst}
+echo ${bldylw}"Generating Intense-M changelog..."${txtrst}
 
 for i in $(seq 7);
 do
