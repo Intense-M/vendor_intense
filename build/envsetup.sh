@@ -58,7 +58,7 @@ function intense_add_hmm_entry()
     do
         if [[ "${1}" == $(echo "${HMM_DESCRIPTIVE[$c]}" | cut -f1 -d":") ]]
         then
-            HMM_DESCRIPTIVE[${c}]="$(_aospb_build_hmm "$1" "$2")"
+            HMM_DESCRIPTIVE[${c}]="$(_intense_build_hmm "$1" "$2")"
             return
         fi
     done
