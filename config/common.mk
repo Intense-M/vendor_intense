@@ -74,9 +74,13 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     PhaseBeam
 
-# AudioFX
+# Music
 PRODUCT_PACKAGES += \
-    AudioFX
+    Apollo
+
+# Custom Intense-M packages
+PRODUCT_PACKAGES += \
+    OmniSwitch
 
 # Extra Optional packages
 PRODUCT_PACKAGES += \
