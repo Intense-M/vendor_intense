@@ -1,7 +1,7 @@
 # Inherit common stuff
-$(call inherit-product, vendor/aospb/config/common.mk)
+$(call inherit-product, vendor/intense/config/common.mk)
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/aospb/overlay/tablet
+PRODUCT_PACKAGE_OVERLAYS += vendor/intense/overlay/tablet
 
 # BT config
 PRODUCT_COPY_FILES += \

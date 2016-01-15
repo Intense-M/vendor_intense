@@ -1,11 +1,11 @@
-# aospb functions that extend build/envsetup.sh
+# intense functions that extend build/envsetup.sh
 
-function aospb_device_combos()
+function intense_device_combos()
 {
     local T list_file variant device
 
     T="$(gettop)"
-    list_file="${T}/vendor/aospb/aospb.devices"
+    list_file="${T}/vendor/intense/intense.devices"
     variant="userdebug"
 
     if [[ $1 ]]
@@ -27,32 +27,32 @@ function aospb_device_combos()
     if [[ ! -f "${list_file}" ]]
     then
         echo "unable to find device list: ${list_file}"
-        list_file="${T}/vendor/aospb/aospb.devices"
+        list_file="${T}/vendor/intense/intense.devices"
         echo "defaulting device list file to: ${list_file}"
     fi
 
     while IFS= read -r device
     do
-        add_lunch_combo "aospb_${device}-${variant}"
+        add_lunch_combo "intense_${device}-${variant}"
     done < "${list_file}"
 }
 
-function aospb_rename_function()
+function intense_rename_function()
 {
-    eval "original_aospb_$(declare -f ${1})"
+    eval "original_intense_$(declare -f ${1})"
 }
 
-function _aospb_build_hmm() #hidden
+function _intense_build_hmm() #hidden
 {
     printf "%-8s %s" "${1}:" "${2}"
 }
 
-function aospb_append_hmm()
+function intense_append_hmm()
 {
-    HMM_DESCRIPTIVE=("${HMM_DESCRIPTIVE[@]}" "$(_aospb_build_hmm "$1" "$2")")
+    HMM_DESCRIPTIVE=("${HMM_DESCRIPTIVE[@]}" "$(_intense_build_hmm "$1" "$2")")
 }
 
-function aospb_add_hmm_entry()
+function intense_add_hmm_entry()
 {
     for c in ${!HMM_DESCRIPTIVE[*]}
     do
@@ -62,10 +62,10 @@ function aospb_add_hmm_entry()
             return
         fi
     done
-    aospb_append_hmm "$1" "$2"
+    intense_append_hmm "$1" "$2"
 }
 
-function aospbremote()
+function intenseremote()
 {
     local proj pfx project
 
@@ -74,7 +74,7 @@ function aospbremote()
         echo "Not in a git directory. Please run this from an Android repository you wish to set up."
         return
     fi
-    git remote rm aospb 2> /dev/null
+    git remote rm intense 2> /dev/null
 
     proj="$(pwd -P | sed "s#$ANDROID_BUILD_TOP/##g")"
 
@@ -84,8 +84,8 @@ function aospbremote()
 
     project="${proj//\//_}"
 
-    git remote add aospb "git@github.com:AOSPB/$pfx$project"
-    echo "Remote 'aospb' created"
+    git remote add intense "git@github.com:Intense-M/$pfx$project"
+    echo "Remote 'intense' created"
 }
 
 function cmremote()
@@ -145,11 +145,11 @@ function cafremote()
     echo "Remote 'caf' created"
 }
 
-function aospb_push()
+function intense_push()
 {
     local branch ssh_name path_opt proj
-    branch="lp5.1"
-    ssh_name="aospb_review"
+    branch="mm-6.0"
+    ssh_name="intense_review"
     path_opt=
 
     if [[ "$1" ]]
@@ -167,25 +167,25 @@ function aospb_push()
         proj="android_$proj"
     fi
 
-    git $path_opt push "ssh://${ssh_name}/AOSPB/$proj" "HEAD:refs/for/$branch"
+    git $path_opt push "ssh://${ssh_name}/Intense-M/$proj" "HEAD:refs/for/$branch"
 }
 
 
-aospb_rename_function hmm
+intense_rename_function hmm
 function hmm() #hidden
 {
     local i T
     T="$(gettop)"
-    original_aospb_hmm
+    original_intense_hmm
     echo
 
-    echo "vendor/aospb extended functions. The complete list is:"
-    for i in $(grep -P '^function .*$' "$T/vendor/aospb/build/envsetup.sh" | grep -v "#hidden" | sed 's/function \([a-z_]*\).*/\1/' | sort | uniq); do
+    echo "vendor/intense extended functions. The complete list is:"
+    for i in $(grep -P '^function .*$' "$T/vendor/intense/build/envsetup.sh" | grep -v "#hidden" | sed 's/function \([a-z_]*\).*/\1/' | sort | uniq); do
         echo "$i"
     done |column
 }
 
-aospb_append_hmm "aospbremote" "Add a git remote for matching AOSPB repository"
-aospb_append_hmm "cmremote" "Add a git remote for matching CM repository"
-aospb_append_hmm "aospremote" "Add git remote for matching AOSP repository"
-aospb_append_hmm "cafremote" "Add git remote for matching CodeAurora repository."
+intense_append_hmm "intenseremote" "Add a git remote for matching Intense-M repository"
+intense_append_hmm "cmremote" "Add a git remote for matching CM repository"
+intense_append_hmm "aospremote" "Add git remote for matching AOSP repository"
+intense_append_hmm "cafremote" "Add git remote for matching CodeAurora repository."
