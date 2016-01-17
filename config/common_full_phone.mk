@@ -5,3 +5,7 @@ $(call inherit-product, vendor/intense/config/common_apn.mk)
 # SIM Toolkit
 PRODUCT_PACKAGES += \
     Stk
+
+# SMS
+PRODUCT_PACKAGES += \
+    messaging
