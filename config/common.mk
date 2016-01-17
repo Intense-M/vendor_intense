@@ -185,7 +185,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
     ro.intense.version=$(INTENSE_VERSION) \
     ro.modversion=$(INTENSE_MOD_VERSION) \
-    ro.aospb.buildtype=$(AOSPB_BUILD_TYPE)
+    ro.intense.buildtype=$(INTENSE_BUILD_TYPE)
 
 EXTENDED_POST_PROCESS_PROPS := vendor/intense/tools/process_props.py
 
