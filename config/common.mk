@@ -80,7 +80,8 @@ PRODUCT_PACKAGES += \
 
 # Custom Intense-M packages
 PRODUCT_PACKAGES += \
-    OmniSwitch
+    OmniSwitch \
+    LockClock
 
 # Extra Optional packages
 PRODUCT_PACKAGES += \
