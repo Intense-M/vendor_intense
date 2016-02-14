@@ -81,6 +81,7 @@ PRODUCT_PACKAGES += \
 # Custom Intense-M packages
 PRODUCT_PACKAGES += \
     OmniSwitch \
+    Screencast \
     LockClock
 
 # Extra Optional packages
